@@ -1,10 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import EnergyLevelService from "../services/energy-level.service";
 import { EnergyLevelFormData } from "../types";
 
 interface EnergyLevelFormProps {
-  userId: number;
+  userId: string;
 }
 
 const EnergyLevelForm: React.FC<EnergyLevelFormProps> = ({ userId }) => {
@@ -82,7 +84,8 @@ const EnergyLevelForm: React.FC<EnergyLevelFormProps> = ({ userId }) => {
       });
 
       const existingLevels = await EnergyLevelService.getByUserId(userId);
-      await Promise.all(existingLevels.map((level) => EnergyLevelService.delete(level.id)));
+      console.log({ existingLevels });
+      await Promise.all(existingLevels.map((level) => EnergyLevelService.delete(level._id)));
       await Promise.all(energyLevelArray.map((level) => EnergyLevelService.create(userId, level)));
 
       navigate("/dashboard");

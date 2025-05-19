@@ -50,7 +50,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userId }): ReactElement => {
     try {
       await TaskService.markComplete(taskId);
       // Update local state after marking complete
-      setTasks(tasks.filter((task) => task.id.toString() !== taskId));
+      setTasks(tasks.filter((task) => task._id.toString() !== taskId));
     } catch (err) {
       console.error("Error marking task complete:", err);
       setError("Failed to update task. Please try again.");

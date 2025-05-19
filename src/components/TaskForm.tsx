@@ -4,14 +4,14 @@ import TaskService from "../services/task.service";
 import { TaskFormData } from "../types";
 
 interface TaskFormProps {
-  userId: number;
+  userId: string;
 }
 
 const TaskForm: React.FC<TaskFormProps> = ({ userId }) => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const isEditMode = !!id;
-
+  console.log({ userId });
   const [formData, setFormData] = useState<TaskFormData>({
     title: "",
     description: "",
@@ -31,7 +31,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ userId }) => {
       const fetchTask = async () => {
         try {
           setLoading(true);
-          const task = await TaskService.getById(parseInt(id));
+          const task = await TaskService.getById(id);
 
           // Format the date for the form (YYYY-MM-DD)
           const dueDate = new Date(task.dueDate);
@@ -86,7 +86,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ userId }) => {
       setLoading(true);
 
       if (isEditMode) {
-        await TaskService.update(parseInt(id), formData);
+        await TaskService.update(id, formData);
       } else {
         await TaskService.create(userId, formData);
       }

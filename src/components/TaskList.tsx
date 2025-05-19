@@ -74,7 +74,7 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, onMarkComplete }) => {
   return (
     <div className="space-y-4">
       {sortedTasks.map((task) => (
-        <div key={task.id} className={`border rounded-lg p-4 ${isDueSoon(task.dueDate) ? "border-red-400 bg-red-50" : "border-gray-200"}`}>
+        <div key={task._id} className={`border rounded-lg p-4 ${isDueSoon(task.dueDate) ? "border-red-400 bg-red-50" : "border-gray-200"}`}>
           <div className="flex justify-between">
             <h3 className="font-semibold text-lg">{task.title}</h3>
             <div className="flex space-x-2">
@@ -94,10 +94,10 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, onMarkComplete }) => {
             </div>
 
             <div className="flex space-x-2">
-              <Link to={`/tasks/${task.id}/edit`} className="text-blue-500 hover:text-blue-700">
+              <Link to={`/tasks/${task._id.toString()}/edit`} className="text-blue-500 hover:text-blue-700">
                 Edit
               </Link>
-              <button onClick={() => onMarkComplete(task.id.toString())} className="text-green-500 hover:text-green-700">
+              <button onClick={() => onMarkComplete(task._id.toString())} className="text-green-500 hover:text-green-700">
                 Complete
               </button>
             </div>

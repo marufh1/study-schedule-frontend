@@ -9,25 +9,25 @@ export const EnergyLevelService = {
   },
 
   // Get energy level by ID
-  getById: async (id: number): Promise<EnergyLevel> => {
+  getById: async (id: string): Promise<EnergyLevel> => {
     const response = await API.get(`/energy-levels/${id}`);
     return response.data;
   },
 
   // Get energy levels by user ID
-  getByUserId: async (userId: number): Promise<EnergyLevel[]> => {
+  getByUserId: async (userId: string): Promise<EnergyLevel[]> => {
     const response = await API.get(`/energy-levels/user/${userId}`);
     return response.data;
   },
 
   // Get energy levels by user ID and day
-  getByUserIdAndDay: async (userId: number, day: string): Promise<EnergyLevel[]> => {
+  getByUserIdAndDay: async (userId: string, day: string): Promise<EnergyLevel[]> => {
     const response = await API.get(`/energy-levels/user/${userId}/day/${day}`);
     return response.data;
   },
 
   // Create a new energy level
-  create: async (userId: number, energyLevelData: EnergyLevelFormData): Promise<EnergyLevel> => {
+  create: async (userId: string, energyLevelData: EnergyLevelFormData): Promise<EnergyLevel> => {
     const energyLevel = {
       ...energyLevelData,
       userId,
@@ -37,13 +37,13 @@ export const EnergyLevelService = {
   },
 
   // Update an energy level
-  update: async (id: number, energyLevelData: Partial<EnergyLevel>): Promise<EnergyLevel> => {
+  update: async (id: string, energyLevelData: Partial<EnergyLevel>): Promise<EnergyLevel> => {
     const response = await API.put(`/energy-levels/${id}`, energyLevelData);
     return response.data;
   },
 
   // Delete an energy level
-  delete: async (id: number): Promise<void> => {
+  delete: async (id: string): Promise<void> => {
     await API.delete(`/energy-levels/${id}`);
   },
 };

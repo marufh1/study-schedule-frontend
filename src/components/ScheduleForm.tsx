@@ -4,7 +4,7 @@ import ScheduleService from "../services/schedule.service";
 import { ScheduleFormData } from "../types";
 
 interface ScheduleFormProps {
-  userId: number;
+  userId: string;
 }
 
 const ScheduleForm: React.FC<ScheduleFormProps> = ({ userId }) => {

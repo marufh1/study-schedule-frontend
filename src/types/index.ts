@@ -2,14 +2,14 @@
 
 // User type
 export interface User {
-  id: number;
+  _id: string;
   name: string;
   email: string;
 }
 
 // Schedule types
 export interface Schedule {
-  id: number;
+  _id: string;
   day: string;
   type: "WORK" | "CLASS" | "STUDY";
   startTime: string;
@@ -18,7 +18,7 @@ export interface Schedule {
   description?: string;
   location?: string;
   date: string; // ISO date string
-  userId: number;
+  userId: string;
 }
 
 export interface ScheduleFormData {
@@ -34,7 +34,7 @@ export interface ScheduleFormData {
 
 // Task types
 export interface Task {
-  id: number;
+  _id: string;
   title: string;
   description: string;
   estimatedHours: number;
@@ -43,7 +43,7 @@ export interface Task {
   completed: boolean;
   subjectArea: string;
   complexityLevel: "LOW" | "MEDIUM" | "HIGH";
-  userId: number;
+  userId: string;
 }
 
 export interface TaskFormData {
@@ -58,12 +58,12 @@ export interface TaskFormData {
 
 // Energy level types
 export interface EnergyLevel {
-  id: number;
+  _id: string;
   day: string;
   timeSlot: "MORNING" | "AFTERNOON" | "EVENING" | "NIGHT";
   level: number; // 1-10
   date?: string; // ISO date string, optional
-  userId: number;
+  userId: string;
 }
 
 export interface EnergyLevelFormData {
@@ -84,7 +84,7 @@ export interface TimeSlot {
 }
 
 export interface StudyTask {
-  id: number;
+  _id: string;
   title: string;
   estimatedHours: number;
   priority: number; // 1-5
@@ -106,7 +106,7 @@ export interface StudySchedule {
 }
 
 export interface OptimizationParams {
-  userId: number;
+  userId: string;
   startDate: string; // ISO date string
   endDate: string; // ISO date string
 }
