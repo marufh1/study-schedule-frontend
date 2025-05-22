@@ -23,12 +23,17 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
             </li>
             <li>
               <Link to="/tasks/new" className="hover:text-blue-200">
-                Add Task
+                Add Assignment
               </Link>
             </li>
             <li>
               <Link to="/schedules/new" className="hover:text-blue-200">
-                Add Schedule
+                Add Blocked Time
+              </Link>
+            </li>
+            <li>
+              <Link to="/schedules" className="hover:text-blue-200">
+                Manage Blocked Time
               </Link>
             </li>
             <li>

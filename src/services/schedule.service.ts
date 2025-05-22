@@ -9,25 +9,31 @@ export const ScheduleService = {
   },
 
   // Get schedule by ID
-  getById: async (id: any): Promise<Schedule> => {
+  getById: async (id: string): Promise<Schedule> => {
     const response = await API.get(`/schedules/${id}`);
     return response.data;
   },
 
   // Get schedules by user ID
-  getByUserId: async (userId: any): Promise<Schedule[]> => {
+  getByUserId: async (userId: string): Promise<Schedule[]> => {
     const response = await API.get(`/schedules/user/${userId}`);
     return response.data;
   },
 
+  // Get schedules by user ID except specific type
+  getByUserIdExceptType: async (userId: string, excludeType: string): Promise<Schedule[]> => {
+    const response = await API.get(`/schedules/user/${userId}/exclude/${excludeType}`);
+    return response.data;
+  },
+
   // Get schedules by user ID and date range
-  getByUserIdAndDateRange: async (userId: any, startDate: string, endDate: string): Promise<Schedule[]> => {
+  getByUserIdAndDateRange: async (userId: string, startDate: string, endDate: string): Promise<Schedule[]> => {
     const response = await API.get(`/schedules/user/${userId}/date-range?startDate=${startDate}&endDate=${endDate}`);
     return response.data;
   },
 
   // Create a new schedule
-  create: async (userId: any, scheduleData: ScheduleFormData): Promise<Schedule> => {
+  create: async (userId: string, scheduleData: ScheduleFormData): Promise<Schedule> => {
     const schedule = {
       ...scheduleData,
       userId,
@@ -36,14 +42,24 @@ export const ScheduleService = {
     return response.data;
   },
 
+  // Create multiple schedules at once
+  createMany: async (userId: string, schedulesData: ScheduleFormData[]): Promise<Schedule[]> => {
+    const schedules = schedulesData.map((scheduleData) => ({
+      ...scheduleData,
+      userId,
+    }));
+    const response = await API.post("/schedules/bulk", schedules);
+    return response.data;
+  },
+
   // Update a schedule
-  update: async (id: any, scheduleData: Partial<Schedule>): Promise<Schedule> => {
+  update: async (id: string, scheduleData: Partial<Schedule>): Promise<Schedule> => {
     const response = await API.put(`/schedules/${id}`, scheduleData);
     return response.data;
   },
 
   // Delete a schedule
-  delete: async (id: any): Promise<void> => {
+  delete: async (id: string): Promise<void> => {
     await API.delete(`/schedules/${id}`);
   },
 };

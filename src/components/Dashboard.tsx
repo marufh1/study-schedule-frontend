@@ -115,15 +115,6 @@ const Dashboard: React.FC<DashboardProps> = ({ userId }): ReactElement => {
         <p className="text-gray-600 mb-4">
           Track your energy levels throughout the week to optimize your study schedule for peak productivity times.
         </p>
-
-        <div className="flex flex-wrap gap-4">
-          {["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"].map((day) => (
-            <div key={day} className="bg-gray-100 p-4 rounded-lg w-full sm:w-auto flex-grow">
-              <h3 className="font-semibold">{day}</h3>
-              <p>Set your typical energy levels for each part of the day</p>
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   );

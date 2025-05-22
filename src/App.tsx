@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
 import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
@@ -6,6 +5,7 @@ import EnergyLevelForm from "./components/EnergyLevelForm";
 import Header from "./components/Header";
 import OptimizationResult from "./components/OptimizationResult";
 import ScheduleForm from "./components/ScheduleForm";
+import ScheduleList from "./components/ScheduleList"; // Import the new component
 import TaskForm from "./components/TaskForm";
 import { User } from "./types";
 
@@ -29,6 +29,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard userId={currentUser._id.toString()} />} />
             <Route path="/tasks/new" element={<TaskForm userId={currentUser._id} />} />
             <Route path="/tasks/:id/edit" element={<TaskForm userId={currentUser._id} />} />
+            <Route path="/schedules" element={<ScheduleList userId={currentUser._id} />} /> {/* New route for listing schedules */}
             <Route path="/schedules/new" element={<ScheduleForm userId={currentUser._id} />} />
             <Route path="/schedules/:id/edit" element={<ScheduleForm userId={currentUser._id} />} />
             <Route path="/energy/new" element={<EnergyLevelForm userId={currentUser._id} />} />
