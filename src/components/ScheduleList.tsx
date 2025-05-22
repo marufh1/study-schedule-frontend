@@ -74,9 +74,9 @@ const ScheduleList: React.FC<ScheduleListProps> = ({ userId }) => {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold">Your Blocked Time Schedules</h2>
+        <h2 className="text-2xl font-bold">Your Working Schedules</h2>
         <button onClick={() => navigate("/schedules/new")} className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md">
-          Add Blocked Time
+          Add Working Schedule
         </button>
       </div>
 
@@ -88,7 +88,7 @@ const ScheduleList: React.FC<ScheduleListProps> = ({ userId }) => {
 
       {schedules.length === 0 ? (
         <div className="bg-gray-100 p-6 rounded-lg text-center">
-          <p className="text-gray-600">You don't have any blocked time schedules yet.</p>
+          <p className="text-gray-600">You don't have any working time schedules yet.</p>
           <button
             onClick={() => navigate("/schedules/new")}
             className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md"
